@@ -10,14 +10,29 @@
 struct Peop
 {
 	char name[20];
-	int age[10];
+	int age;
 	char sex[5];  //男 女  保密
+};             //没有占内存
+struct St
+{
+	struct Peop p;
+	int num;
+	float f;
 };
+void print1(struct Peop* p1)
+{
+	printf(" %s %d %s\n", p1->name, p1->age, p1->sex);
+}
 int main()
 {
-	struct Peop p1 = { 0 };
+	struct Peop p1 = { "张三", 12, "男"};  //结构体变量的创建
+	struct St s = { { "张三", 12, "男"}, 100, 3.14 };
+	printf("%s %d %s\n", p1.name, p1.age, p1.sex);
+	printf("%s %d %s %d %lf\n", s.p.name, s.p.age, s.p.sex, s.num, s.f);
+
+	print1(&p1);
 	return 0;
-}
+}	
 
 
 
